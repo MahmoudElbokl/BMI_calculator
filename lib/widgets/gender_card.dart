@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-class CardContent extends StatelessWidget {
-  final IconData icon ;
+
+import '../constants.dart';
+
+class GenderCardBody extends StatelessWidget {
+  final String image;
   final String label ;
 
-  CardContent(this.icon, this.label);
+  GenderCardBody(this.image, this.label);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,11 @@ class CardContent extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Icon(icon,size: 50,),
+        Image(image: AssetImage(image),
+          height: 50,
+          width: 50,
+          color: Colors.white,),
+        SizedBox(height: 10,),
         Text(label,textAlign: TextAlign.center,style:kLabelTextStyle,),
       ],
     );
