@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             CalculatorBrain calc =
                 CalculatorBrain(height: height, weight: weight);
-            Navigator.of(context).pushReplacement(
+            Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => ResultScreen(
                   bmiResult: calc.calculateBMI(),
@@ -62,33 +62,26 @@ class _HomePageState extends State<HomePage> {
                         color: gender == Gender.Male
                             ? kCardinActiveColor
                             : kCardUnActiveColor,
-                        cardChild: GenderCardBody("images/male.png", "MALE"),
+                        cardChild: GenderCardBody("male.png", "MALE"),
                         onPress: () {
                           setState(() {
-                            if (gender == Gender.Male) {
-                              gender = Gender.NotActive;
-                            } else {
-                              gender = Gender.Male;
-                            }
+                            gender = gender == Gender.Male ? Gender.NotActive : Gender.Male;
                           });
                         },
-                      )),
+                      ),),
                       Expanded(
                           child: ReusableCard(
                         color: gender == Gender.Female
                             ? kCardinActiveColor
                             : kCardUnActiveColor,
                         cardChild:
-                            GenderCardBody("images/female.png", "FEMALE"),
+                            GenderCardBody("female.png", "FEMALE"),
                         onPress: () {
                           setState(() {
-                            if (gender == Gender.Female) {
-                              gender = Gender.NotActive;
-                            } else
-                              gender = Gender.Female;
+                            gender = gender == Gender.Female ? Gender.NotActive : Gender.Female;
                           });
                         },
-                      )),
+                      ),),
                     ],
                   ));
             }),

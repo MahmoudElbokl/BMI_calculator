@@ -14,7 +14,7 @@ class GenderCardBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Image(image: AssetImage(image),
+        Image(image: AssetImage("images/$image"),
           height: 50,
           width: 50,
           color: Colors.white,),
