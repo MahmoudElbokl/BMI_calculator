@@ -9,9 +9,10 @@ class ResultScreen extends StatelessWidget {
   final String resultText;
   final String interpretation;
 
-  ResultScreen({@required this.bmiResult,
-    @required this.resultText,
-    @required this.interpretation});
+  ResultScreen(
+      {@required this.bmiResult,
+      @required this.resultText,
+      @required this.interpretation});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +22,11 @@ class ResultScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 14),
           color: Color(0xFF4C4F5E),
           onPressed: () {
-            Navigator.of(context).pushReplacement(
+            Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(
                 builder: (context) => HomePage(),
               ),
+              (route) => false,
             );
           },
           child: Text(

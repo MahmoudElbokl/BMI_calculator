@@ -54,131 +54,141 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             StatefulBuilder(builder: (context, setState) {
               return Expanded(
-                  flex: 10,
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: ReusableCard(
+                flex: 10,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: ReusableCard(
                         color: gender == Gender.Male
                             ? kCardinActiveColor
                             : kCardUnActiveColor,
                         cardChild: GenderCardBody("male.png", "MALE"),
                         onPress: () {
                           setState(() {
-                            gender = gender == Gender.Male ? Gender.NotActive : Gender.Male;
+                            gender = gender == Gender.Male
+                                ? Gender.NotActive
+                                : Gender.Male;
                           });
                         },
-                      ),),
-                      Expanded(
-                          child: ReusableCard(
+                      ),
+                    ),
+                    Expanded(
+                      child: ReusableCard(
                         color: gender == Gender.Female
                             ? kCardinActiveColor
                             : kCardUnActiveColor,
-                        cardChild:
-                            GenderCardBody("female.png", "FEMALE"),
+                        cardChild: GenderCardBody("female.png", "FEMALE"),
                         onPress: () {
                           setState(() {
-                            gender = gender == Gender.Female ? Gender.NotActive : Gender.Female;
+                            gender = gender == Gender.Female
+                                ? Gender.NotActive
+                                : Gender.Female;
                           });
                         },
-                      ),),
-                    ],
-                  ));
-            }),
-            StatefulBuilder(builder: (context, setState) {
-              return Expanded(
-                flex: 8,
-                child: ReusableCard(
-                  color: kCardUnActiveColor,
-                  cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "HEIGHT",
-                        style: kLabelTextStyle,
                       ),
-                      Row(
-                        textBaseline: TextBaseline.alphabetic,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "$height",
-                            style: kNumberTextStyle,
-                          ),
-                          Text("cm"),
-                        ],
-                      ),
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: Colors.white,
-                          thumbColor: Color(0xFF4C4F5E),
-                          overlayColor: Color(0x29EB1555),
-                          thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 12),
-                          overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 24),
-                        ),
-                        child: Slider(
-                            value: height.toDouble(),
-                            min: 100,
-                            max: 240,
-                            onChanged: (double newValue) {
-                              setState(() {
-                                height = newValue.round();
-                              });
-                            }),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             }),
-            StatefulBuilder(builder: (context, setState) {
-              return Expanded(
-                  flex: 10,
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: ReusableCard(
-                          color: kCardUnActiveColor,
-                          cardChild: CardChildContent(
-                            label: "WEIGHT",
-                            value: weight,
-                            increase: () {
-                              setState(() {
-                                weight++;
-                              });
-                            },
-                            decrease: () {
-                              setState(() {
-                                weight--;
-                              });
-                            },
-                          ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return Expanded(
+                  flex: 8,
+                  child: ReusableCard(
+                    color: kCardUnActiveColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "HEIGHT",
+                          style: kLabelTextStyle,
                         ),
-                      ),
-                      Expanded(
-                        child: ReusableCard(
-                          color: kCardUnActiveColor,
-                          cardChild: CardChildContent(
-                              label: "AGE",
-                              value: age,
+                        Row(
+                          textBaseline: TextBaseline.alphabetic,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              "$height",
+                              style: kNumberTextStyle,
+                            ),
+                            Text("cm"),
+                          ],
+                        ),
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            activeTrackColor: Colors.white,
+                            thumbColor: Color(0xFF4C4F5E),
+                            overlayColor: Color(0x29EB1555),
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 12),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 24),
+                          ),
+                          child: Slider(
+                              value: height.toDouble(),
+                              min: 100,
+                              max: 240,
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  height = newValue.round();
+                                });
+                              }),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            StatefulBuilder(
+              builder: (context, setState) {
+                return Expanded(
+                    flex: 10,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: ReusableCard(
+                            color: kCardUnActiveColor,
+                            cardChild: CardChildContent(
+                              label: "WEIGHT",
+                              value: weight,
                               increase: () {
                                 setState(() {
-                                  age++;
+                                  weight++;
                                 });
                               },
                               decrease: () {
                                 setState(() {
-                                  age--;
+                                  weight--;
                                 });
-                              }),
+                              },
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ));
-            }),
+                        Expanded(
+                          child: ReusableCard(
+                            color: kCardUnActiveColor,
+                            cardChild: CardChildContent(
+                                label: "AGE",
+                                value: age,
+                                increase: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                                decrease: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                }),
+                          ),
+                        ),
+                      ],
+                    ));
+              },
+            ),
           ],
         ),
       ),
